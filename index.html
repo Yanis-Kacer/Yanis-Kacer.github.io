@@ -3,247 +3,214 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yanis Kacer | Portfolio</title>
-    <!-- Polices et Icônes -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <title>Mon Portfolio - BTS SIO</title>
     <style>
-        :root {
-            --bg: #050505;
-            --accent: #3b82f6;
-            --text-main: #ffffff;
-            --text-dim: #94a3b8;
-            --card-bg: #111111;
+        /* Réinitialisation de base */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
 
         body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: var(--bg);
-            color: var(--text-main);
+            background-color: #f4f7f6;
+            color: #333;
             line-height: 1.6;
-            overflow-x: hidden;
         }
 
-        /* --- NAVIGATION --- */
-        nav {
-            position: fixed;
-            top: 0; width: 100%;
-            padding: 20px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(5, 5, 5, 0.8);
-            backdrop-filter: blur(10px);
+        /* Style de la barre de navigation (basé sur ta capture) */
+        header {
+            background-color: #25465f; /* Couleur bleue foncée de l'image */
+            position: sticky;
+            top: 0;
             z-index: 1000;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
-        .logo { font-weight: 800; font-size: 1.2rem; letter-spacing: -1px; }
-        .logo span { color: var(--accent); }
-
-        .nav-links { display: flex; list-style: none; gap: 30px; }
-        .nav-links a { 
-            text-decoration: none; color: var(--text-dim); 
-            font-size: 0.9rem; transition: 0.3s;
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
         }
-        .nav-links a:hover { color: var(--accent); }
 
-        /* --- HERO SECTION --- */
-        .hero {
-            height: 100vh;
+        .nav-links {
+            list-style: none;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
             align-items: center;
-            text-align: center;
-            background: radial-gradient(circle at center, #1e1e1e 0%, #050505 100%);
         }
 
-        .hero h1 { 
-            font-size: clamp(3rem, 8vw, 6rem); 
-            font-weight: 800; 
-            line-height: 1;
-            margin-bottom: 20px;
-        }
-
-        .hero p { color: var(--accent); font-weight: 600; font-size: 1.2rem; margin-bottom: 30px; }
-
-        /* --- SECTIONS --- */
-        section { padding: 100px 10%; }
-        h2 { font-size: 2.5rem; margin-bottom: 50px; text-align: center; }
-
-        /* --- CARDS (EXP & PROJETS) --- */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-
-        .card {
-            background: var(--card-bg);
-            padding: 30px;
-            border-radius: 20px;
-            border: 1px solid rgba(255,255,255,0.05);
-            transition: 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        .nav-links > li {
             position: relative;
         }
 
-        .card:hover {
-            transform: translateY(-10px);
-            border-color: var(--accent);
-            background: #161616;
-        }
-
-        .card h3 { margin-bottom: 10px; color: var(--accent); }
-        .card .date { font-size: 0.8rem; color: var(--text-dim); margin-bottom: 15px; display: block; }
-
-        /* --- COMPETENCES --- */
-        .skills {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        .skill-tag {
-            background: rgba(59, 130, 246, 0.1);
-            color: var(--accent);
-            padding: 8px 20px;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            border: 1px solid rgba(59, 130, 246, 0.2);
-        }
-
-        /* --- CONTACT --- */
-        .contact-container {
-            max-width: 600px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .btn-contact {
-            display: inline-block;
-            padding: 15px 40px;
-            background: var(--accent);
-            color: white;
+        .nav-links a {
+            display: block;
+            padding: 20px 25px;
+            color: #a8b8c4; /* Couleur de texte grisée */
             text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            margin-top: 20px;
-            transition: 0.3s;
+            font-size: 16px;
+            transition: color 0.3s ease;
         }
 
-        .btn-contact:hover { box-shadow: 0 0 20px rgba(59, 130, 246, 0.5); }
-
-        /* --- ANIMATIONS AU SCROLL --- */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: 1s all ease;
+        /* Élément actif ou au survol */
+        .nav-links > li > a:hover, 
+        .nav-links > li > a.active {
+            color: #ffffff;
         }
 
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
+        /* Flèche pour le menu déroulant */
+        .dropdown-icon {
+            font-size: 12px;
+            margin-left: 5px;
+            vertical-align: middle;
         }
 
-        footer { padding: 50px; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); color: var(--text-dim); }
+        /* Style du menu déroulant */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #222222; /* Fond sombre du sous-menu */
+            min-width: 200px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+            list-style: none;
+            top: 100%;
+            left: 0;
+        }
+
+        .dropdown-content li a {
+            padding: 15px 20px;
+            color: #d1d5db;
+        }
+
+        .dropdown-content li a:hover {
+            background-color: #333333;
+            color: #ffffff;
+        }
+
+        /* Afficher le menu déroulant au survol */
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Style des sections de contenu */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        section {
+            padding: 60px 20px;
+            margin-bottom: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            min-height: 50vh; /* Pour donner un peu de volume à la page vide */
+        }
+
+        h2 {
+            color: #25465f;
+            border-bottom: 2px solid #25465f;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        /* Style spécifique pour la section GitHub */
+        .github-grid {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .github-card {
+            flex: 1;
+            min-width: 300px;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 16px;
+            background-color: #fafbfc;
+        }
+
+        .github-card h3 {
+            color: #0366d6;
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 <body>
 
-    <nav>
-        <div class="logo">YANIS<span>KACER.</span></div>
-        <ul class="nav-links">
-            <li><a href="#accueil">Accueil</a></li>
-            <li><a href="#exp">Expériences</a></li>
-            <li><a href="#projets">Projets</a></li>
-            <li><a href="#formation">Formation</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
+    <header>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#accueil" class="active">Accueil</a></li>
+                <li class="dropdown">
+                    <a href="#parcours">Parcours scolaire <span class="dropdown-icon">▼</span></a>
+                    <ul class="dropdown-content">
+                        <li><a href="#bac-pro">Bac Pro SN</a></li>
+                        <li><a href="#bts-sio">BTS SIO SISR</a></li>
+                    </ul>
+                </li>
+                <li><a href="#experiences">Expériences Pro</a></li>
+                <li><a href="#activites">Activités</a></li>
+                <li><a href="#veille">Veille Technologique</a></li>
+                <li><a href="#github">Mes Projets GitHub</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <section id="accueil" class="hero">
-        <h1 class="reveal">Yanis Kacer</h1>
-        <p class="reveal">Développeur & Data Specialist</p>
-        <a href="#exp" class="btn-contact reveal">Voir mon parcours</a>
-    </section>
+    <main>
+        <section id="accueil">
+            <h2>Accueil</h2>
+            <p>Bienvenue sur mon portfolio. Je suis étudiant en BTS SIO option SISR...</p>
+        </section>
 
-    <section id="exp">
-        <h2 class="reveal">Expériences Professionnelles</h2>
-        <div class="grid reveal">
-            <div class="card">
-                <span class="date">Juin 2023 - Août 2023</span>
-                <h3>Assistant Informatique</h3>
-                <p>Maintenance logicielle, gestion de parc informatique et support technique utilisateur.</p>
+        <section id="parcours">
+            <h2>Parcours scolaire</h2>
+            
+            <div id="bac-pro" style="margin-top: 30px;">
+                <h3>Bac Pro SN (Systèmes Numériques)</h3>
+                <p>Description de ta formation, de ton lycée et de ce que tu y as appris.</p>
             </div>
-            <!-- Ajoute d'autres cartes ici -->
-        </div>
-    </section>
 
-    <section id="projets" style="background: #080808;">
-        <h2 class="reveal">Mes Projets</h2>
-        <div class="grid reveal">
-            <div class="card">
-                <h3>Analyse de données</h3>
-                <p>Projet de traitement de données volumineuses avec Python et Pandas.</p>
-                <a href="#" style="color: var(--accent); text-decoration: none; font-size: 0.8rem; margin-top: 10px; display: block;">GitHub →</a>
+            <div id="bts-sio" style="margin-top: 30px;">
+                <h3>BTS SIO option SISR</h3>
+                <p>Description des compétences acquises en Solutions d'Infrastructure, Systèmes et Réseaux.</p>
             </div>
-            <div class="card">
-                <h3>App Web Dynamique</h3>
-                <p>Interface interactive réalisée en HTML/CSS/JS avec API REST.</p>
-                <a href="#" style="color: var(--accent); text-decoration: none; font-size: 0.8rem; margin-top: 10px; display: block;">GitHub →</a>
+        </section>
+
+        <section id="experiences">
+            <h2>Expériences Professionnelles</h2>
+            <p>Détaille ici tes stages, alternances ou emplois (ex: Stage de 1ère année, de 2ème année).</p>
+        </section>
+
+        <section id="activites">
+            <h2>Activités</h2>
+            <p>Réalisations, projets d'école ou autres travaux pratiques (TP).</p>
+        </section>
+
+        <section id="veille">
+            <h2>Veille Technologique</h2>
+            <p>Présentation de ton sujet de veille, tes sources (Flux RSS, sites spécialisés, etc.) et tes synthèses.</p>
+        </section>
+
+        <section id="github">
+            <h2>Mes Projets GitHub</h2>
+            <p>Retrouvez ici les codes sources de mes principaux projets et scripts.</p>
+            <br>
+            <div class="github-grid">
+                <div class="github-card">
+                    <h3>📚 Projet-Deploiement-GLPI</h3>
+                    <p>Script bash pour automatiser l'installation d'un serveur LAMP et de GLPI.</p>
+                    <a href="#" style="color: #0366d6; text-decoration: none; font-weight: bold;">Voir sur GitHub →</a>
+                </div>
+                
+                <div class="github-card">
+                    <h3>🛡️ Config-Pare-Feu</h3>
+                    <p>Fichiers de configuration et documentation pour la mise en place d'un pare-feu pfSense.</p>
+                    <a href="#" style="color: #0366d6; text-decoration: none; font-weight: bold;">Voir sur GitHub →</a>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
-    <section id="formation">
-        <h2 class="reveal">Compétences</h2>
-        <div class="skills reveal">
-            <span class="skill-tag">Python</span>
-            <span class="skill-tag">SQL</span>
-            <span class="skill-tag">JavaScript</span>
-            <span class="skill-tag">Data Viz</span>
-            <span class="skill-tag">Git</span>
-            <span class="skill-tag">HTML/CSS</span>
-        </div>
-    </section>
-
-    <section id="contact">
-        <h2 class="reveal">Me Contacter</h2>
-        <div class="contact-container reveal">
-            <p>Disponible pour de nouvelles opportunités ou collaborations.</p>
-            <a href="mailto:votre-email@gmail.com" class="btn-contact">Envoyer un Email</a>
-            <div style="margin-top: 30px;">
-                <a href="#" style="color: white; margin: 0 15px; font-size: 1.5rem;"><i class="fab fa-linkedin"></i></a>
-                <a href="#" style="color: white; margin: 0 15px; font-size: 1.5rem;"><i class="fab fa-github"></i></a>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <p>&copy; 2023 Yanis Kacer. Fait avec passion.</p>
-    </footer>
-
-    <script>
-        // Animation au scroll
-        function reveal() {
-            var reveals = document.querySelectorAll(".reveal");
-            for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = window.innerHeight;
-                var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 150;
-                if (elementTop < windowHeight - elementVisible) {
-                    reveals[i].classList.add("active");
-                }
-            }
-        }
-        window.addEventListener("scroll", reveal);
-        // Lancer une fois au chargement
-        reveal();
-    </script>
 </body>
 </html>
